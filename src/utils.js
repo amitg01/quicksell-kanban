@@ -14,7 +14,19 @@ const addUserToTask = (tickets) =>
     return { ...rest, user: getUser(userId) };
   });
 
-export const sortByGroup = (response, groupBy) => {
+export const groupData = (response, groupBy, sortBy) => {
+  if (sortBy) {
+    const sortedData = response?.tickets.sort((a, b) => {
+      if (sortBy === "priority") {
+        return b.priority - a.priority;
+      }
+      if (sortBy === "title") {
+        return a.title.localeCompare(b.title);
+      }
+    });
+    response.tickets = sortedData;
+  }
+
   switch (groupBy) {
     case GROUP_BY_LABELS.PRIORITY:
       return groupDataByPriority(response);

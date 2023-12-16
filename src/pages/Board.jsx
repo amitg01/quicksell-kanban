@@ -4,12 +4,14 @@ import { DragDropContext } from "react-beautiful-dnd";
 import Column from "../components/Column";
 
 import data from "../data.json";
-import { GROUP_BY_LABELS } from "../constants";
-import { sortByGroup } from "../utils";
+import { GROUP_BY_LABELS, SORT_BY_OPTIONS } from "../constants";
+import { groupData } from "../utils";
 
 const Board = () => {
-  const [groupBy, setGroupBy] = useState(GROUP_BY_LABELS.USER);
-  const sortedData = sortByGroup(data, groupBy);
+  const [groupBy, setGroupBy] = useState(GROUP_BY_LABELS.STATUS);
+  const [sortBy, setSortBy] = useState(SORT_BY_OPTIONS.PRIORITY);
+
+  const sortedData = groupData(data, groupBy, sortBy);
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
@@ -39,19 +41,43 @@ const Board = () => {
     destinationColumn.splice(destinationIndex, 0, removedTask);
   };
 
+  const handleGroupByChange = (event) => {
+    setGroupBy(event.target.value);
+  };
+
+  const handleSortByChange = (event) => {
+    setSortBy(event.target.value);
+  };
+
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div className="board">
-        {Object.keys(sortedData).map((label) => (
-          <Column
-            key={label}
-            columnId={label}
-            title={label}
-            tasks={sortedData[label]}
-          />
+    <>
+      <select value={groupBy} onChange={handleGroupByChange}>
+        {Object.values(GROUP_BY_LABELS).map((label) => (
+          <option key={label} value={label}>
+            {label}
+          </option>
         ))}
-      </div>
-    </DragDropContext>
+      </select>
+      <select value={sortBy} onChange={handleSortByChange}>
+        {Object.values(SORT_BY_OPTIONS).map((label) => (
+          <option key={label} value={label}>
+            {label}
+          </option>
+        ))}
+      </select>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="board">
+          {Object.keys(sortedData).map((label) => (
+            <Column
+              key={label}
+              columnId={label}
+              title={label}
+              tasks={sortedData[label]}
+            />
+          ))}
+        </div>
+      </DragDropContext>
+    </>
   );
 };
 

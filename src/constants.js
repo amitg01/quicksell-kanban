@@ -20,6 +20,11 @@ export const GROUP_BY_LABELS = {
   USER: "user",
 };
 
+export const SORT_BY_OPTIONS = {
+  TITLE: "title",
+  PRIORITY: "priority",
+};
+
 export const STATUS_GROUPS = [
   "Backlog",
   "Todo",

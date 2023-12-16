@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 
 const Card = ({ task, index }) => {
+  console.log({ task });
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided) => (
@@ -12,7 +13,7 @@ const Card = ({ task, index }) => {
         >
           <p>{task.id}</p>
           <p>{task.title}</p>
-          <p>{task.user.name}</p>
+          <p>{task.user.name}</p> - <p>{task.priority}</p>
         </div>
       )}
     </Draggable>
