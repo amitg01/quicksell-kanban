@@ -1,9 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
 
 .board {
-  width: 90%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
@@ -17,7 +21,7 @@
   background-color: #f2f2f2;
   padding: 1rem;
   width: 98%;
-  height: 8.5rem;
+  height: 15rem;
   margin: 0.5rem auto;
   display: flex;
   flex-wrap: wrap;

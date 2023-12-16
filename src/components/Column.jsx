@@ -2,7 +2,6 @@ import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
 
 const Column = ({ columnId, title, tasks }) => {
-  console.log({ tasks });
   return (
     <Droppable droppableId={columnId}>
       {(provided) => (

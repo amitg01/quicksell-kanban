@@ -1,11 +1,15 @@
+import { useState } from "react";
+
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "../components/Column";
+
 import data from "../data.json";
-import PRIORITY from "../constants";
-import { sortDataByPriority } from "../utils";
+import { GROUP_BY_LABELS } from "../constants";
+import { sortByGroup } from "../utils";
 
 const Board = () => {
-  const sortedData = sortDataByPriority(data);
+  const [groupBy, setGroupBy] = useState(GROUP_BY_LABELS.USER);
+  const sortedData = sortByGroup(data, groupBy);
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
@@ -38,12 +42,12 @@ const Board = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="board">
-        {Object.keys(sortedData).map((item) => (
+        {Object.keys(sortedData).map((label) => (
           <Column
-            key={item}
-            columnId={item}
-            title={PRIORITY[item]}
-            tasks={sortedData[item]}
+            key={label}
+            columnId={label}
+            title={label}
+            tasks={sortedData[label]}
           />
         ))}
       </div>

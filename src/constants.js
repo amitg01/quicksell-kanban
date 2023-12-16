@@ -1,9 +1,29 @@
-const PRIORITY = {
-  4: "URGENT",
-  3: "HIGH",
-  2: "MEDIUM",
-  1: "LOW",
-  0: "NO_PRIORITY",
+export const PRIORITY = {
+  URGENT: 4,
+  HIGH: 3,
+  MEDIUM: 2,
+  LOW: 1,
+  NO_PRIORITY: 0,
 };
 
-export default PRIORITY;
+export const PRIORITY_COLUMN_LABELS = {
+  "No Priority": PRIORITY.NO_PRIORITY,
+  Urgent: PRIORITY.URGENT,
+  High: PRIORITY.HIGH,
+  Medium: PRIORITY.MEDIUM,
+  Low: PRIORITY.LOW,
+};
+
+export const GROUP_BY_LABELS = {
+  PRIORITY: "priority",
+  STATUS: "status",
+  USER: "user",
+};
+
+export const STATUS_GROUPS = [
+  "Backlog",
+  "Todo",
+  "In progress",
+  "Done",
+  "Cancelled",
+];
