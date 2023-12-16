@@ -15,17 +15,22 @@ const addUserToTask = (tickets) =>
     return { ...rest, user: getUser(userId) };
   });
 
+const sortTickets = (response, sortBy) => {
+  const sortedTickets = response?.tickets.sort((a, b) => {
+    if (sortBy === "priority") {
+      return b.priority - a.priority;
+    }
+    if (sortBy === "title") {
+      return a.title.localeCompare(b.title);
+    }
+  });
+  return sortedTickets;
+};
+
 export const groupData = (response, groupBy, sortBy) => {
   if (sortBy) {
-    const sortedData = response?.tickets.sort((a, b) => {
-      if (sortBy === "priority") {
-        return b.priority - a.priority;
-      }
-      if (sortBy === "title") {
-        return a.title.localeCompare(b.title);
-      }
-    });
-    response.tickets = sortedData;
+    const sortedTickets = sortTickets(response, sortBy);
+    response.tickets = sortedTickets;
   }
 
   switch (groupBy) {

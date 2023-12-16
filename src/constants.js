@@ -15,8 +15,8 @@ export const PRIORITY_COLUMN_LABELS = {
 };
 
 export const GROUP_BY_LABELS = {
-  PRIORITY: "priority",
   STATUS: "status",
+  PRIORITY: "priority",
   USER: "user",
 };
 

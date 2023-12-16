@@ -51,13 +51,15 @@ const useBoardProvider = () => {
   };
 
   useEffect(() => {
-    const sortedData = groupData(data, groupBy, sortBy);
-    setTickets(sortedData);
+    const sortedTickets = groupData(data, groupBy, sortBy);
+    setTickets(sortedTickets);
   }, [sortBy, groupBy]);
 
   return {
     tickets,
+    sortBy,
     setSortBy,
+    groupBy,
     setGroupBy,
     onDragEnd,
   };
