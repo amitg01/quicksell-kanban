@@ -3,6 +3,7 @@ import {
   PRIORITY_COLUMN_LABELS,
   STATUS_GROUPS,
 } from "./constants";
+
 import data from "./data.json";
 const { users } = data;
 

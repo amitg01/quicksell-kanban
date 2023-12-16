@@ -1,10 +1,10 @@
 import "./App.css";
-import Board from "./pages/Board";
+import Kanban from "./pages/Kanban";
 
 function App() {
   return (
     <div className="App">
-      <Board />
+      <Kanban />
     </div>
   );
 }
