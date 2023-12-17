@@ -1,5 +1,6 @@
 import { Droppable } from "react-beautiful-dnd";
-import Card from "./Card";
+import Card from "../Card";
+import ColumnHeader from "./header";
 
 const Column = ({ columnId, title, tasks }) => {
   return (
@@ -10,7 +11,7 @@ const Column = ({ columnId, title, tasks }) => {
           ref={provided.innerRef}
           {...provided.droppableProps}
         >
-          <p>{title}</p>
+          <ColumnHeader title={title} ticketsCount={tasks.length} />
           {tasks.map((task, index) => (
             <Card key={task.id} index={index} task={task} />
           ))}

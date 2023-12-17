@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 
-.App {
-  text-align: center;
+body {
+  background-color: #f2f2f2;
 }
 
 .board {
@@ -17,8 +17,32 @@
   width: 18%;
 }
 
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.column .titleBox {
+  display: flex;
+  width: 50%;
+}
+
+.column .titleBox .title {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.column .ctaBox {
+  display: flex;
+  width: 15%;
+  justify-content: space-between;
+  align-items: center;
+  color: gray;
+}
+
 .card {
-  background-color: #f2f2f2;
+  background-color: #fff;
   padding: 1rem;
   width: 98%;
   height: 15rem;
@@ -26,4 +50,11 @@
   display: flex;
   flex-wrap: wrap;
   border-radius: 5px;
+}
+
+.toolBar {
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem 2rem;
 }

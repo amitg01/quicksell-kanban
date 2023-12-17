@@ -13,7 +13,7 @@ const ToolBar = () => {
   };
 
   return (
-    <>
+    <div className="toolBar">
       <div>
         <select id="groupBy" onChange={handleGroupByChange} value={groupBy}>
           {Object.keys(GROUP_BY_LABELS).map((key) => (
@@ -32,7 +32,7 @@ const ToolBar = () => {
           ))}
         </select>
       </div>
-    </>
+    </div>
   );
 };
 

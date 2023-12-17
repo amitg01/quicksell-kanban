@@ -1,5 +1,5 @@
 import { DragDropContext } from "react-beautiful-dnd";
-import Column from "./Column";
+import Column from "./column";
 import { useBoard } from "../hooks/useBoard";
 
 const Board = () => {
