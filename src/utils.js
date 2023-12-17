@@ -7,12 +7,20 @@ import {
 import data from "./data.json";
 const { users } = data;
 
-export const getUser = (id) => users.find((user) => user.id === id);
+export const getUserWithId = (id) => users.find((user) => user.id === id);
+export const getUserWithName = (name) =>
+  users.find((user) => user.name === name);
+
+export const getInitials = (name) =>
+  name
+    .split(" ")
+    .map((name) => name[0])
+    .join("");
 
 const addUserToTask = (tickets) =>
   tickets.map((task) => {
     const { userId, ...rest } = task;
-    return { ...rest, user: getUser(userId) };
+    return { ...rest, user: getUserWithId(userId) };
   });
 
 const sortTickets = (response, sortBy) => {

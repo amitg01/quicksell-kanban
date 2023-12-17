@@ -6,6 +6,22 @@ export const PRIORITY = {
   NO_PRIORITY: 0,
 };
 
+export const PRIORITY_ICONS = {
+  [PRIORITY.URGENT]: "🔥",
+  [PRIORITY.HIGH]: "🔴",
+  [PRIORITY.MEDIUM]: "🟠",
+  [PRIORITY.LOW]: "🟢",
+  [PRIORITY.NO_PRIORITY]: "⚪",
+};
+
+export const STATUS_ICONS = {
+  Backlog: "📥",
+  Todo: "📝",
+  "In progress": "📌",
+  Done: "✅",
+  Cancelled: "❌",
+};
+
 export const PRIORITY_COLUMN_LABELS = {
   "No Priority": PRIORITY.NO_PRIORITY,
   Urgent: PRIORITY.URGENT,

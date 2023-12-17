@@ -3,18 +3,20 @@
 }
 
 body {
-  background-color: #f2f2f2;
+  background-color: #fff;
+  overflow-x: scroll;
 }
 
 .board {
-  width: 95%;
+  background-color: #f2f2f2;
   display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
+  padding-left: 2rem;
+  width: fit-content;
 }
 
 .column {
-  width: 18%;
+  min-width: 18rem;
+  margin-right: 1rem;
 }
 
 .column-header {
@@ -25,7 +27,23 @@ body {
 
 .column .titleBox {
   display: flex;
-  width: 50%;
+  width: 60%;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.icon.user-icon {
+  border-radius: 50%;
+  background-color: aqua;
+  border: 1px solid black;
 }
 
 .column .titleBox .title {
@@ -44,16 +62,15 @@ body {
 .card {
   background-color: #fff;
   padding: 1rem;
-  width: 98%;
+  width: 18rem;
   height: 15rem;
-  margin: 0.5rem auto;
+  margin: 1rem 0;
   display: flex;
   flex-wrap: wrap;
   border-radius: 5px;
 }
 
 .toolBar {
-  border: 1px solid black;
   display: flex;
   justify-content: flex-start;
   padding: 0.5rem 2rem;
