@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-import data from "../data.json";
-import { GROUP_BY_LABELS, SORT_BY_OPTIONS } from "../constants";
+import { BOARD_DATA_URL, GROUP_BY_LABELS, SORT_BY_OPTIONS } from "../constants";
 import { groupData } from "../utils";
+import { getBoardData } from "../api/boardApi";
 
 const BoardContext = createContext();
 
@@ -18,6 +18,7 @@ export const BoardProvider = ({ children }) => {
 export const useBoard = () => useContext(BoardContext);
 
 const useBoardProvider = () => {
+  const [boardData, setBoardData] = useState([]);
   const [tickets, setTickets] = useState([]);
   const [sortBy, setSortBy] = useState(SORT_BY_OPTIONS.PRIORITY);
   const [groupBy, setGroupBy] = useState(GROUP_BY_LABELS.STATUS);
@@ -50,10 +51,19 @@ const useBoardProvider = () => {
     destinationColumn.splice(destinationIndex, 0, removedTask);
   };
 
+  const fetchData = async () => {
+    const { data } = await getBoardData(BOARD_DATA_URL);
+    setBoardData(data);
+  };
+
   useEffect(() => {
-    const sortedTickets = groupData(data, groupBy, sortBy);
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const sortedTickets = groupData(boardData, groupBy, sortBy);
     setTickets(sortedTickets);
-  }, [sortBy, groupBy]);
+  }, [sortBy, groupBy, boardData]);
 
   return {
     tickets,

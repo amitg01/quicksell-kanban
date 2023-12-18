@@ -197,6 +197,7 @@ body {
   border-radius: 50%;
   height: 0.4rem;
   width: 0.4rem;
+  padding-left: 0.5rem;
 }
 
 .icon.user-icon {

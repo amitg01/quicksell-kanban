@@ -1,3 +1,6 @@
+export const BOARD_DATA_URL =
+  "https://api.quicksell.co/v1/internal/frontend-assignment";
+
 export const PRIORITY = {
   URGENT: 4,
   HIGH: 3,

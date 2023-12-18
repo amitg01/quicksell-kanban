@@ -4,27 +4,26 @@ import {
   STATUS_GROUPS,
 } from "./constants";
 
-import data from "./data.json";
-const { users } = data;
+export const getUserWithId = (users, id) =>
+  users.find((user) => user.id === id);
 
-export const getUserWithId = (id) => users.find((user) => user.id === id);
-export const getUserWithName = (name) =>
+export const getUserWithName = (users, name) =>
   users.find((user) => user.name === name);
 
 export const getInitials = (name) =>
   name
     .split(" ")
-    .map((name) => name[0])
+    .map((name) => name[0]?.toUpperCase())
     .join("");
 
-const addUserToTask = (tickets) =>
-  tickets.map((task) => {
+const addUserToTask = (users, tickets) =>
+  tickets?.map((task) => {
     const { userId, ...rest } = task;
-    return { ...rest, user: getUserWithId(userId) };
+    return { ...rest, user: getUserWithId(users, userId) };
   });
 
 const sortTickets = (response, sortBy) => {
-  const sortedTickets = response?.tickets.sort((a, b) => {
+  const sortedTickets = response?.tickets?.sort((a, b) => {
     if (sortBy === "priority") {
       return b.priority - a.priority;
     }
@@ -55,7 +54,7 @@ export const groupData = (response, groupBy, sortBy) => {
 
 export const groupDataByPriority = (response) => {
   const data = {};
-  const tasksWithUsers = addUserToTask(response?.tickets);
+  const tasksWithUsers = addUserToTask(response?.users, response?.tickets);
 
   for (let label in PRIORITY_COLUMN_LABELS) {
     if (!data[label]) {
@@ -75,7 +74,7 @@ export const groupDataByPriority = (response) => {
 
 export const groupDataByUsers = (response) => {
   const data = {};
-  const tasksWithUsers = addUserToTask(response?.tickets);
+  const tasksWithUsers = addUserToTask(response?.users, response?.tickets);
   const users = response?.users;
   const sortedUsers = users.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -97,13 +96,13 @@ export const groupDataByUsers = (response) => {
 
 export const groupDataByStatus = (response) => {
   const data = {};
-  const tasksWithUsers = addUserToTask(response?.tickets);
+  const tasksWithUsers = addUserToTask(response?.users, response?.tickets);
 
   STATUS_GROUPS.forEach((group) => {
     if (!data[group]) {
       data[group] = [];
     }
-    const groupTasks = tasksWithUsers.filter((task) => task.status === group);
+    const groupTasks = tasksWithUsers?.filter((task) => task.status === group);
     if (groupTasks) {
       data[group].push(...groupTasks);
     }
