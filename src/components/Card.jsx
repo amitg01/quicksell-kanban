@@ -16,7 +16,7 @@ const Card = ({ task, index }) => {
             <p className="task_id">{task.id}</p>
             <BoardIcon.CardIcon type="user" task={task} />
           </div>
-          <div className=" flex py">
+          <div className="flex py">
             <BoardIcon.CardIcon type="status" task={task} className="mr" />
             <p className="ticket_title">{task.title}</p>
           </div>

@@ -267,9 +267,14 @@ body {
 .badge {
   display: flex;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: #99999c;
   border: 1px solid #f2f2f6;
   padding: 3px;
   border-radius: 5px;
+}
+
+.badge_icon {
+  margin-right: 0.3rem;
+  color: #99999c;
 }
