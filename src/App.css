@@ -236,6 +236,10 @@ body {
   margin-right: 0.8rem;
 }
 
+.ctaBox .settings-btn {
+  font-size: 0.9rem;
+}
+
 .card {
   background-color: #fff;
   width: 18rem;
@@ -290,6 +294,14 @@ body {
 
 .display_settings {
   position: relative;
+}
+
+.show_more_btn {
+  transform: rotateX(180deg);
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+  color: #575759;
+  font-weight: 800;
 }
 
 .filter_modal {

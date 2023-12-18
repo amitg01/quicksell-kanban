@@ -10,7 +10,7 @@ const ColumnHeader = ({ title, ticketsCount }) => {
       </div>
       <div className="ctaBox">
         <p>+</p>
-        <p>-</p>
+        <p className="settings-btn">⚙️</p>
       </div>
     </div>
   );

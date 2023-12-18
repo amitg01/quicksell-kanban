@@ -9,6 +9,16 @@ const DisplaySetting = () => {
   const { sortBy, handleSortByChange, groupBy, handleGroupByChange } =
     useBoard();
 
+  const onSortByChange = (e) => {
+    setShowDisplaySetting(false);
+    handleSortByChange(e);
+  };
+
+  const onGroupByChange = (e) => {
+    setShowDisplaySetting(false);
+    handleGroupByChange(e);
+  };
+
   return (
     <div className="display_settings">
       <div
@@ -17,27 +27,14 @@ const DisplaySetting = () => {
       >
         <p>⚙️</p>
         <p>Display</p>
-        <p
-          style={{
-            transform: "rotateX(180deg)",
-            fontSize: "1.4rem",
-            marginBottom: ".4rem",
-            color: "#575759",
-            fontWeight: "800",
-          }}
-        >
-          ^
-        </p>
+        <p className="show_more_btn">^</p>
       </div>
       {showDisplaySetting ? (
-        <div
-          className="filter_modal"
-          onBlur={() => setShowDisplaySetting(false)}
-        >
+        <div className="filter_modal">
           <div className="flex-container">
             <p className="label">Grouping</p>
             <Dropdown
-              onChange={handleGroupByChange}
+              onChange={onGroupByChange}
               value={groupBy}
               list={GROUP_BY_LABELS}
             />
@@ -45,7 +42,7 @@ const DisplaySetting = () => {
           <div className="flex-container mt">
             <p className="label">Ordering</p>
             <Dropdown
-              onChange={handleSortByChange}
+              onChange={onSortByChange}
               value={sortBy}
               list={SORT_BY_OPTIONS}
             />
