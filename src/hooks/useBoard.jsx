@@ -27,10 +27,10 @@ const useBoardProvider = () => {
   const [boardData, setBoardData] = useState([]);
   const [tickets, setTickets] = useState([]);
   const [sortBy, setSortBy] = useState(
-    getFromLocalStorage(LOCALSTORAGE_SORT_BY_KEY) || SORT_BY_OPTIONS.TITLE
+    getFromLocalStorage(LOCALSTORAGE_SORT_BY_KEY) || SORT_BY_OPTIONS.PRIORITY
   );
   const [groupBy, setGroupBy] = useState(
-    getFromLocalStorage(LOCALSTORAGE_GROUP_BY_KEY) || GROUP_BY_LABELS.PRIORITY
+    getFromLocalStorage(LOCALSTORAGE_GROUP_BY_KEY) || GROUP_BY_LABELS.STATUS
   );
 
   const handleSortByChange = (e) => {
