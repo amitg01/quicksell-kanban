@@ -60,7 +60,7 @@ export const groupDataByPriority = (response) => {
     if (!data[label]) {
       data[label] = [];
     }
-    const groupTasks = tasksWithUsers.filter(
+    const groupTasks = tasksWithUsers?.filter(
       (task) => task.priority === PRIORITY_COLUMN_LABELS[label]
     );
 
@@ -76,14 +76,14 @@ export const groupDataByUsers = (response) => {
   const data = {};
   const tasksWithUsers = addUserToTask(response?.users, response?.tickets);
   const users = response?.users;
-  const sortedUsers = users.sort((a, b) => a.name.localeCompare(b.name));
+  const sortedUsers = users?.sort((a, b) => a.name.localeCompare(b.name));
 
-  sortedUsers.forEach((user) => {
+  sortedUsers?.forEach((user) => {
     const { name } = user;
     if (!data[name]) {
       data[name] = [];
     }
-    const groupTasks = tasksWithUsers.filter(
+    const groupTasks = tasksWithUsers?.filter(
       (task) => task.user.id === user.id
     );
     if (groupTasks) {
@@ -109,4 +109,13 @@ export const groupDataByStatus = (response) => {
   });
 
   return data;
+};
+
+export const setInLocalStorage = (key, value) => {
+  localStorage.setItem(key, value);
+};
+
+export const getFromLocalStorage = (key) => {
+  const value = localStorage.getItem(key);
+  return value;
 };

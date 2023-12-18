@@ -1,7 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { BOARD_DATA_URL, GROUP_BY_LABELS, SORT_BY_OPTIONS } from "../constants";
-import { groupData } from "../utils";
+import {
+  BOARD_DATA_URL,
+  GROUP_BY_LABELS,
+  LOCALSTORAGE_GROUP_BY_KEY,
+  LOCALSTORAGE_SORT_BY_KEY,
+  SORT_BY_OPTIONS,
+} from "../constants";
+import { getFromLocalStorage, groupData } from "../utils";
 import { getBoardData } from "../api/boardApi";
 
 const BoardContext = createContext();
@@ -20,8 +26,24 @@ export const useBoard = () => useContext(BoardContext);
 const useBoardProvider = () => {
   const [boardData, setBoardData] = useState([]);
   const [tickets, setTickets] = useState([]);
-  const [sortBy, setSortBy] = useState(SORT_BY_OPTIONS.PRIORITY);
-  const [groupBy, setGroupBy] = useState(GROUP_BY_LABELS.STATUS);
+  const [sortBy, setSortBy] = useState(
+    getFromLocalStorage(LOCALSTORAGE_SORT_BY_KEY) || SORT_BY_OPTIONS.TITLE
+  );
+  const [groupBy, setGroupBy] = useState(
+    getFromLocalStorage(LOCALSTORAGE_GROUP_BY_KEY) || GROUP_BY_LABELS.PRIORITY
+  );
+
+  const handleSortByChange = (e) => {
+    const { value } = e.target;
+    setSortBy(value);
+    localStorage.setItem(LOCALSTORAGE_SORT_BY_KEY, value);
+  };
+
+  const handleGroupByChange = (e) => {
+    const { value } = e.target;
+    setGroupBy(value);
+    localStorage.setItem(LOCALSTORAGE_GROUP_BY_KEY, value);
+  };
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
@@ -68,9 +90,9 @@ const useBoardProvider = () => {
   return {
     tickets,
     sortBy,
-    setSortBy,
+    handleGroupByChange,
     groupBy,
-    setGroupBy,
+    handleSortByChange,
     onDragEnd,
   };
 };

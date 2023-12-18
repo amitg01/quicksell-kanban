@@ -1,6 +1,9 @@
 export const BOARD_DATA_URL =
   "https://api.quicksell.co/v1/internal/frontend-assignment";
 
+export const LOCALSTORAGE_SORT_BY_KEY = "quicksell_sortBy";
+export const LOCALSTORAGE_GROUP_BY_KEY = "quicksell_groupBy";
+
 export const PRIORITY = {
   URGENT: 4,
   HIGH: 3,

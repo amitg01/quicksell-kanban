@@ -2,16 +2,8 @@ import { GROUP_BY_LABELS, SORT_BY_OPTIONS } from "../constants";
 import { useBoard } from "../hooks/useBoard";
 
 const ToolBar = () => {
-  const { sortBy, setSortBy, groupBy, setGroupBy } = useBoard();
-
-  const handleGroupByChange = (e) => {
-    setGroupBy(e.target.value);
-  };
-
-  const handleSortByChange = (e) => {
-    setSortBy(e.target.value);
-  };
-
+  const { sortBy, handleSortByChange, groupBy, handleGroupByChange } =
+    useBoard();
   return (
     <div className="toolBar">
       <div>
