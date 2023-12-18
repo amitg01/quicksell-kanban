@@ -7,7 +7,7 @@ import {
   LOCALSTORAGE_SORT_BY_KEY,
   SORT_BY_OPTIONS,
 } from "../constants";
-import { getFromLocalStorage, groupData } from "../utils";
+import { getFromLocalStorage, groupData, setInLocalStorage } from "../utils";
 import { getBoardData } from "../api/boardApi";
 
 const BoardContext = createContext();
@@ -36,13 +36,13 @@ const useBoardProvider = () => {
   const handleSortByChange = (e) => {
     const { value } = e.target;
     setSortBy(value);
-    localStorage.setItem(LOCALSTORAGE_SORT_BY_KEY, value);
+    setInLocalStorage(LOCALSTORAGE_SORT_BY_KEY, value);
   };
 
   const handleGroupByChange = (e) => {
     const { value } = e.target;
     setGroupBy(value);
-    localStorage.setItem(LOCALSTORAGE_GROUP_BY_KEY, value);
+    setInLocalStorage(LOCALSTORAGE_GROUP_BY_KEY, value);
   };
 
   const onDragEnd = (result) => {
