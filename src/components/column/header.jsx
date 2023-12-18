@@ -6,7 +6,7 @@ const ColumnHeader = ({ title, ticketsCount }) => {
       <div className="titleBox">
         <BoardIcon.HeaderIcon title={title} />
         <p className="title">{title}</p>
-        <p>{ticketsCount}</p>
+        <p className="tickets_count">{ticketsCount}</p>
       </div>
       <div className="ctaBox">
         <p>+</p>
