@@ -4,6 +4,7 @@ import { useBoard } from "../hooks/useBoard";
 const ToolBar = () => {
   const { sortBy, handleSortByChange, groupBy, handleGroupByChange } =
     useBoard();
+
   return (
     <div className="toolBar">
       <div>

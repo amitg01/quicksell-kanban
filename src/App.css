@@ -263,3 +263,13 @@ body {
   width: 14rem;
   text-overflow: ellipsis;
 }
+
+.badge {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #99999c;
+  border: 1px solid #f2f2f6;
+  padding: 3px;
+  border-radius: 5px;
+}
