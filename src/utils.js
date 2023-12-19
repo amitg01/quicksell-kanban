@@ -22,8 +22,11 @@ const addUserToTask = (users, tickets) =>
     return { ...rest, user: getUserWithId(users, userId) };
   });
 
-const sortTickets = (response, sortBy) => {
+const sortTickets = (response, sortBy, groupBy) => {
   const sortedTickets = response?.tickets?.sort((a, b) => {
+    if (groupBy === "priority" && sortBy === "priority") {
+      return b.id.localeCompare(a.id);
+    }
     if (sortBy === "priority") {
       return b.priority - a.priority;
     }
@@ -36,7 +39,7 @@ const sortTickets = (response, sortBy) => {
 
 export const groupData = (response, groupBy, sortBy) => {
   if (sortBy) {
-    const sortedTickets = sortTickets(response, sortBy);
+    const sortedTickets = sortTickets(response, sortBy, groupBy);
     response.tickets = sortedTickets;
   }
 
